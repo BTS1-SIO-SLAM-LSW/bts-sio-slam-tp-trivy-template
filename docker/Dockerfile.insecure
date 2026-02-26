@@ -1,6 +1,6 @@
 # Dockerfile pédagogique volontairement "insecure"
 # Objectif : produire plus de CVE détectables par Trivy.
-FROM debian:10
+FROM debian:12
 
 # Paquets souvent présents en environnement réel (augmentent la surface d'attaque)
 RUN apt-get update && apt-get install -y \

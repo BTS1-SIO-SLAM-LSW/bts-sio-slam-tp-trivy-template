@@ -98,6 +98,8 @@ docker build -f docker/Dockerfile.insecure -t tp-trivy:insecure .
 docker images
 ```
 
+(Ne pas oublier le . dans la première commande car il représente le dossier courant)
+
 ### Questions B
 
 1.  Quelle base image est utilisée ?
