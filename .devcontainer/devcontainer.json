@@ -1,0 +1,13 @@
+{
+  "name": "TP Trivy (BTS SIO SLAM)",
+  "build": { "dockerfile": "Dockerfile" },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "postCreateCommand": "chmod +x scripts/*.sh && bash scripts/install-trivy.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [ "ms-azuretools.vscode-docker" ]
+    }
+  }
+}

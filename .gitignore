@@ -1,0 +1,8 @@
+# Reports (souvent lourds — à versionner seulement si demandé)
+reports/*.json
+reports/*.sarif
+reports/*_table.txt
+
+# Editor
+.vscode/
+.DS_Store

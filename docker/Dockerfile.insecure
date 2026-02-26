@@ -1,0 +1,18 @@
+# Dockerfile pédagogique volontairement "insecure"
+# Objectif : produire plus de CVE détectables par Trivy.
+FROM debian:10
+
+# Paquets souvent présents en environnement réel (augmentent la surface d'attaque)
+RUN apt-get update && apt-get install -y \
+    curl \
+    openssl \
+    wget \
+    python3 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+COPY app/ /app/
+
+EXPOSE 8080
+# Lancement via bash (pas idéal, volontairement)
+CMD ["bash", "-lc", "python3 -m http.server 8080 --directory /app"]

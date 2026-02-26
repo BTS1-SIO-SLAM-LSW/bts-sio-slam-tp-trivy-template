@@ -1,0 +1,22 @@
+# Dockerfile corrigé (remédiation)
+# Objectif : réduire les vulnérabilités via base plus récente + upgrade + moindre privilège.
+FROM debian:12
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        curl \
+        openssl \
+        wget \
+        python3 \
+    && apt-get upgrade -y \
+    && rm -rf /var/lib/apt/lists/*
+
+# Durcissement léger : utilisateur non-root
+RUN useradd -m appuser
+USER appuser
+
+WORKDIR /app
+COPY --chown=appuser:appuser app/ /app/
+
+EXPOSE 8080
+CMD ["python3", "-m", "http.server", "8080", "--directory", "/app"]
